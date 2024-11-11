@@ -7,12 +7,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Opc.Ua.ModelCompiler", "Opc
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Files", "Solution Files", "{2EDA8446-E853-4739-866C-C224E9B024C7}"
 	ProjectSection(SolutionItems) = preProject
-		BuildEngineeringUnits.bat = BuildEngineeringUnits.bat
-		BuildStandardTypes.bat = BuildStandardTypes.bat
-		CompileNodeSets.bat = CompileNodeSets.bat
-		PublishModel.bat = PublishModel.bat
-		TestNodeSets.bat = TestNodeSets.bat
-		UpdateLicense.bat = UpdateLicense.bat
+		run.sh = run.sh
 	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DemoModel", "Tests\DemoModel\DemoModel.csproj", "{E1155082-AFD3-449D-BFB3-008CE10D619C}"

@@ -109,44 +109,12 @@ The public repository is updated as frequently as the OPC UA Specification (once
 
 The ModelCompiler code is [MIT license](https://github.com/OPCFoundation/UA-ModelCompiler/blob/master/license.md), however, it links to the UA-.NETStandard NuGet packages which is covered under the [OPC Foundation Redistributables licence](https://opcfoundation.org/license/redistributables/1.3/index.html). 
   
-## Docker Build
-
-A Docker build with the UA Model Compiler is available in GitHub as [ua-modelcompiler](https://github.com/OPCF-Members/UA-ModelCompiler/pkgs/container/ua-modelcompiler).
-
-It can be downloaded with this command:
-```
-docker pull ghcr.io/opcfoundation/ua-modelcompiler:latest
-```
-
-You may need to use this command before downloading the docker image:
-```
-docker login ghcr.io -u <user> -p <person access token>
-```
-
-Running the image requires a local directory with the source files which is specified with the -v option (the ${pwd} is using bash/powershell syntax. Use %CD% if using Windows CMD). The following command is run from the directory where the source files are:
-
-```
-docker run -v ${pwd}:/data --rm ghcr.io/opcfoundation/ua-modelcompiler:latest compile -d2 /data/Opc.Ua.Di.NodeSet2.xml,Opc.Ua.DI,DI -o2 /data/generated 
-```
-
-The tool can also automatically find all NodeSet dependencies if it is run from a directory with all necessary NodeSets (i.e. [UA-Nodeset](https://github.com/OPCFoundation/UA-Nodeset)). The command to run from the nodeset directory is:
-
-```
-docker run -v ${pwd}:/nodesets --rm ghcr.io/opcfoundation/ua-modelcompiler:latest compile-nodesets -input /nodesets -o2 /nodesets/generated -uri http://opcfoundation.org/UA/Machinery/ -uri http://opcfoundation.org/UA/DI/
-```
-
-The docker image can be rebuilt from source with this command:
-
-```
-docker build -t opcua-modelcompiler .
-```
-
 ## Example Generation ##
 The following process will demonstrate how to generate code using the supplied nodeset files:
- 1. Clone the repository and then build the source in Visual Studio 2022, in Release mode.
- 2. Open a Command prompt and then launch the BuildStandardTypes.bat
- 3. After the script completes, navigate to the .\Published folder to view the output.
- 4. Optionally, modify the BAT file and specify the location of your UA Stack(s) to automatically copy the generated files.
+ 1. Clone the repository and then build the source in Visual Studio 2022, in Debug mode.
+ 2. Open a Command prompt and then launch the run.sh with input argument of the xml repository structure
+ 3. After the script completes, navigate to the .\output folder to view the output.
+ 4. Optionally modify the shell script if you are building the executable to another directory or you are on different platform than UNIX 
 
 ### XML Files ###
 #### Model Design example ####
@@ -179,3 +147,11 @@ An excerpt of the Model Design file is shown here:
 This ModelCompiler is used to generate the content of the [Nodeset GitHub repository](https://github.com/OPCFoundation/UA-Nodeset).
 
 This ModelCompiler is used to generate the content of the [.NET Samples GitHub repository](https://github.com/OPCFoundation/UA-.NETStandard-Samples).
+
+## Added stuff: 
+- UaModeler folder
+  - this folder contains example generated project which can be used for the ModelCompiler generation of classes and other files.
+- run.sh
+  - optimized for mac generation, future versions in progress 
+
+*Generally only the xml is needed, you can even generate this type of xml with the [opcua-modeler](https://github.com/FreeOpcUa/opcua-modeler)*
