@@ -15,6 +15,7 @@
     <Copyright>Copyright © OPC Foundation</Copyright>
     <Product>OPC UA Model Compiler</Product>
     <Configurations>Debug;Release;Docker</Configurations>
+    <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
   </PropertyGroup>
 
   <!-- Package for dotnet tool build -->
@@ -515,6 +516,12 @@
     <PackageReference Include="McMaster.Extensions.CommandLineUtils" Version="4.1.1" />
     <PackageReference Include="Microsoft.OpenApi.Readers" Version="1.6.15" />
     <PackageReference Include="OPCFoundation.NetStandard.Opc.Ua.Core" Version="1.5.374.78" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="..\.dockerignore">
+      <Link>.dockerignore</Link>
+    </Content>
   </ItemGroup>
 
 </Project>

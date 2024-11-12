@@ -155,3 +155,9 @@ This ModelCompiler is used to generate the content of the [.NET Samples GitHub r
   - optimized for mac generation, future versions in progress 
 
 *Generally only the xml is needed, you can even generate this type of xml with the [opcua-modeler](https://github.com/FreeOpcUa/opcua-modeler)*
+
+# Workflow
+Copy the .xml file to the UaModeler folder. Then run the following command from the root of the project: 
+```bash
+./run.sh UaModeler/example.xml 
+```
