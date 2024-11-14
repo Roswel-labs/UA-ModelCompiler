@@ -1,4 +1,36 @@
-# Model Compiler #
+# Model Compiler
+
+The Model Compiler takes OPC UA information model `.xml` representation, and produces `C#` and other source code to be used in the OPC UA server template. This way, the information model doesn't need to be hardcoded.
+
+This repository is a fork of the OPC Foundation [ModelCompiler](https://github.com/OPCFoundation/UA-ModelCompiler).
+
+# Usage
+
+## Prerequisities
+
+1) have the `.xml` information model file, you obtain it by:
+  - typing it manually
+  - generate it using the Unified Automation [UA Modeler](https://www.unified-automation.com/fileadmin/files/development/uamodeler)
+  - geneate it using our dockerized version of [UA Modeler](https://github.com/Roswel-labs/UaModelerDocker)
+  - generate it using free [opcua-modeler](https://github.com/FreeOpcUa/opcua-modeler)
+
+2) have DOTNET 8.0 or Docker installed
+
+## Dotnet
+
+1) build the project - e.g. with Rider or VS.
+
+2) run `chmod +x ./run.sh` 
+
+3) use `./run.sh <your_model_path> <output_dir>`
+
+## Docker
+
+1) change your host sided input and output volume paths (the ones before `:`) in the `docker-compose.yml`
+
+2) use `docker compose up`
+
+# The original (forked) readme
 The [OPC Foundation](https://opcfoundation.org) Model Compiler will generate C# and ANSI C source code from XML files which include the UA Services, data-types, error codes, etc.; and numerous CSV files that contain NodeIds, error codes, and attributes etc.
 
 The input format for the tool is a file that conforms to the schema defined in UA Model Design.xsd. 
@@ -148,16 +180,3 @@ This ModelCompiler is used to generate the content of the [Nodeset GitHub reposi
 
 This ModelCompiler is used to generate the content of the [.NET Samples GitHub repository](https://github.com/OPCFoundation/UA-.NETStandard-Samples).
 
-## Added stuff: 
-- UaModeler folder
-  - this folder contains example generated project which can be used for the ModelCompiler generation of classes and other files.
-- run.sh
-  - optimized for mac generation, future versions in progress 
-
-*Generally only the xml is needed, you can even generate this type of xml with the [opcua-modeler](https://github.com/FreeOpcUa/opcua-modeler)*
-
-# Workflow
-Copy the .xml file to the UaModeler folder. Then run the following command from the root of the project: 
-```bash
-./run.sh UaModeler/example.xml 
-```

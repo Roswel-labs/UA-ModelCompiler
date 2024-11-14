@@ -1,16 +1,16 @@
 #!/bin/bash
 
 # Define paths
-MODEL_COMPILER_PATH="build/bin/Debug/net8.0/Opc.Ua.ModelCompiler"
+MODEL_COMPILER_PATH="src/build/bin/Debug/net8.0/Opc.Ua.ModelCompiler"
 
 # Check if the correct number of arguments is provided
-if [ "$#" -ne 1 ]; then
-  echo "Usage: $0 <input_file>"
+if [ "$#" -ne 2 ]; then
+  echo "Usage: $0 <input_file> <output_dir>"
   exit 1
 fi
 
 INPUT_FILE="$1"
-OUTPUT_DIR="$(dirname "$INPUT_FILE")/output"
+OUTPUT_DIR="$2"
 
 # Check if the Model Compiler exists
 if [ ! -f "$MODEL_COMPILER_PATH" ]; then

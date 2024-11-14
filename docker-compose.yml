@@ -1,0 +1,8 @@
+services:
+  ua_modelcompiler:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - ./input/example.xml:/input/inputfile.xml
+      - ./output:/output
